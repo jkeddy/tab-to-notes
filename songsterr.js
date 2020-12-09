@@ -3,27 +3,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // replace print button with toggle notes button
     let printButton = document.getElementById('control-print')
     let noteButton = printButton.cloneNode(true)
-    printButton.parentNode.replaceChild(noteButton,printButton)
+    printButton.parentNode.replaceChild(noteButton, printButton)
     console.log('test')
     noteButton.addEventListener('click', (e) => {
-        
+
         const measureGroups = document.querySelectorAll('svg.n')
         const measures = document.querySelectorAll('.m')
         const intervals = document.querySelectorAll('.v')
-        
+
         intervals.forEach(e => {
             let interval = e.textContent
             // get tab as int and y pos
             // checking for scratch notes
-            if(interval != 'X') {
-                let noteInterval = parseInt(interval) 
+            if (interval != 'X') {
+                let noteInterval = parseInt(interval)
                 let notePos = e.attributes.y.nodeValue
                 // const openNote = 'E'
                 e.textContent = convertToNote(noteInterval, notePos)
             }
         })
     })
-    
+
     function convertToNote(interval, y) {
         const keySignature = document.querySelectorAll('.C8nsu') //not really the correct term
         const tuningSystem = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             // console.log('out of bounds ' + tuningSystem[differenceTone])
             //if(tuningSystem[differenceTone] == undefined) console.log('out of bounds undefined')
         }
-    
+
         //convertToNote(noteInterval, notePos)
     }
-    })
+})
